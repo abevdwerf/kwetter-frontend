@@ -1,5 +1,5 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile, user } from '@angular/fire/auth';
+import { Auth, User, UserCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile, user } from '@angular/fire/auth';
 import { Observable, from } from 'rxjs';
 import { UserInterface } from '../app/user.interface';
 
@@ -16,15 +16,19 @@ export class AuthService {
         email: string, 
         username: string, 
         password: string
-    ): Observable<void> {
+    ): Observable<string> {
         const promise = createUserWithEmailAndPassword(
             this.firebaseAuth, 
             email, 
             password
-        ).then(response => 
-            updateProfile(response.user, {displayName: username}),
-        );
-
+        ).then((userCredential: UserCredential) => {
+            // Update profile with display name
+            return updateProfile(userCredential.user, { displayName: username }).then(() => {
+              // Return the user's UUID (UID)
+              return userCredential.user.uid;
+            });
+          });
+      
         return from(promise);
     }
 
@@ -40,5 +44,9 @@ export class AuthService {
     logout(): Observable<void> {
         const promise = signOut(this.firebaseAuth);
         return from(promise);
+    }
+
+    getCurrentUser(): Observable<User | null | undefined> {
+        return this.user$;
     }
 }

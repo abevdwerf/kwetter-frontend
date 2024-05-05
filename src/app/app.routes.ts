@@ -4,7 +4,7 @@ import { LogicComponent } from './login/login.component';
 import { AuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { PostTweetComponent } from './post-tweet/post-tweet.component';
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['']);
 
 export const routes: Routes = [
