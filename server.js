@@ -3,6 +3,7 @@ const path = require('path');
 
 const dir = "src/environments";
 const file = "environment.ts";
+const devFile = "environment.development.ts";
 const prodFile = "environment.prod.ts"; // For production deployment
 
 const content = `${process.env.FIREBASE_DETAILS}`;
@@ -23,6 +24,7 @@ fs.access(dir, fs.constants.F_OK, (err) => {
     // Now write to file
     try {
         fs.writeFileSync(dir + "/" + file, content);
+        fs.writeFileSync(dir + "/" + devFile, content);
         fs.writeFileSync(dir + "/" + prodFile, content);
         console.log("Created successfully in", process.cwd());
         if (fs.existsSync(dir + "/" + file)) {
