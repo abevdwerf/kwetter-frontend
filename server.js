@@ -7,6 +7,7 @@ const devFile = "environment.development.ts";
 const prodFile = "environment.prod.ts"; // For production deployment
 
 const content = `${process.env.FIREBASE_DETAILS}`;
+console.log("content" + content)
 
 fs.access(dir, fs.constants.F_OK, (err) => {
     if (err) {
