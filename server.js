@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const dir = "src/environments";
-const file = "environment.ts";
+const file = "environment.development.ts";
 const prodFile = "environment.prod.ts"; // For production deployment
 
 const content = `${process.env.FIREBASE_DETAILS}`;
