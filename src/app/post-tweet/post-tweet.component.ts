@@ -31,7 +31,7 @@ export class PostTweetComponent {
         if (user) {
           const rawForm = this.form.getRawValue();
           // Get the user's information'
-          this.userService.getUserByUuid(user.uid).subscribe({
+          this.userService.getUserByUid(user.uid).subscribe({
             next: (userData) => {
               console.log(userData)
               const tweet: PostTweetInterface = {

@@ -3,6 +3,7 @@ export interface TweetInterface {
     userId: string;
     displayName: string;
     content: string;
+    createdAt: Date;
 }
 
 export interface PostTweetInterface {

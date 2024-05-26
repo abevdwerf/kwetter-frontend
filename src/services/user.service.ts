@@ -15,7 +15,7 @@ export class UserService {
     return this.http.post<void>(`${environment.backendUrl}users`, userData);
   }
 
-  getUserByUuid(uuid: string): Observable<User> {
-    return this.http.get<User>(`${environment.backendUrl}users/${uuid}`);
+  getUserByUid(uid: string): Observable<User> {
+    return this.http.get<User>(`${environment.backendUrl}users/${uid}`);
   }
 }
