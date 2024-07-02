@@ -23,6 +23,8 @@ jobs:
 
       - name: run config
         run: npm run config
+        env:
+          FIREBASE_DETAILS: ${{ secrets.FIRE_BASE_DETAILS }}
 
       - name: Build Angular application
         run: npm run build
